@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarjeta de Presentación - Elvin Villatoro</title>
+    
+    <!-- ESTILOS CSS: Tonos verdes modernos -->
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+            padding: 20px;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            padding: 40px 30px;
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .avatar {
+            width: 90px;
+            height: 90px;
+            background-color: #11998e;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 32px;
+            font-weight: bold;
+            margin: 0 auto 20px auto;
+            box-shadow: 0 4px 10px rgba(17, 153, 142, 0.3);
+        }
+
+        h1 {
+            font-size: 26px;
+            color: #11998e;
+            margin-bottom: 8px;
+        }
+
+        .profesion {
+            font-size: 15px;
+            font-weight: 600;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+            line-height: 1.4;
+        }
+
+        .botones-contacto {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 15px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-email {
+            background-color: #11998e;
+            color: white;
+        }
+
+        .btn-email:hover {
+            background-color: #0d7c73;
+        }
+
+        .btn-copiar {
+            background-color: #f0fdf4;
+            color: #11998e;
+        }
+
+        .btn-copiar:hover {
+            background-color: #dcfce7;
+        }
+
+        .alerta {
+            margin-top: 15px;
+            font-size: 13px;
+            color: #166534;
+            font-weight: bold;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ESTRUCTURA HTML -->
+    <div class="card">
+        <div class="avatar">EV</div>
+        
+        <h1>Elvin Arquímides Villatoro</h1>
+        <p class="profesion">Técnico en Ingeniería de Sistemas Informáticos</p>
+        
+        <div class="botones-contacto">
+            <a href="mailto:elvin.ues@gmail.com" class="btn btn-email">
+                Enviar un correo
+            </a>
+            
+            <button id="btnCopiar" class="btn btn-copiar">
+                Copiar dirección de E-mail
+            </button>
+        </div>
+
+        <div id="mensajeAlerta" class="alerta">
+            ¡Correo copiado al portapapeles!
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        const correo = 'elvin.ues@gmail.com';
+        const botonCopiar = document.getElementById('btnCopiar');
+        const mensajeAlerta = document.getElementById('mensajeAlerta');
+
+        botonCopiar.addEventListener('click', () => {
+            navigator.clipboard.writeText(correo).then(() => {
+                mensajeAlerta.style.display = 'block';
+                
+                setTimeout(() => {
+                    mensajeAlerta.style.display = 'none';
+                }, 3000);
+            }).catch(err => {
+                console.error('Error al copiar el texto: ', err);
+            });
+        });
+    </script>
+
+</body>
+</html>
